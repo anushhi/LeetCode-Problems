@@ -13,8 +13,8 @@ class Solution:
             if node:
                 stack.append(node.left)
                 stack.append(node.right)
-                res.append(node.val)
+                res = [node.val] + res
                 
-        return res[::-1]
+        return res
         # return self.postorderTraversal(root.left) + self.postorderTraversal(root.right) + [root.val] if root else[]
             
