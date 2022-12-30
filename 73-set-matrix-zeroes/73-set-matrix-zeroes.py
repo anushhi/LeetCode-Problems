@@ -3,57 +3,33 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
-#         r_set = set()
-#         c_set = set()
+        cols = len(matrix[0])
+        rows = len(matrix)
         
-#         for i in range(len(matrix)):
-#             for j in range(len(matrix[0])):
-                    
-#                 if matrix[i][j] == 0:
-#                     r_set.add(i)
-#                     c_set.add(j)
-#         for i in range(len(matrix)):
-#             for j in range(len(matrix[0])):
-#                 if i in r_set or j in c_set:
-#                     matrix[i][j] = 0
-                    
-#         return matrix
-    
-#     # without using extra space
-    
-        m = len(matrix)
-        n = len(matrix[0])
-		
-        first_row_has_zero = False
-        first_col_has_zero = False
+        rowHasZero = False
+        colHasZero = False
         
-        # iterate through matrix to mark the zero row and cols
-        for row in range(m):
-            for col in range(n):
+        for row in range(rows):
+            for col in range(cols):
                 if matrix[row][col] == 0:
                     if row == 0:
-                        first_row_has_zero = True
+                        rowHasZero = True
                     if col == 0:
-                        first_col_has_zero = True
-                    matrix[row][0] = matrix[0][col] = 0
-    
-        # iterate through matrix to update the cell to be zero if it's in a zero row or col
-        for row in range(1, m):
-            for col in range(1, n):
-                matrix[row][col] = 0 if matrix[0][col] == 0 or matrix[row][0] == 0 else matrix[row][col]
-        
-        # update the first row and col if they're zero
-        if first_row_has_zero:
-            for col in range(n):
+                        colHasZero = True
+                    matrix[0][col] = matrix[row][0] = 0
+                    
+        for row in range(1,rows):
+            for col in range(1,cols):
+                if matrix[0][col] == 0 or matrix[row][0] == 0:
+                    matrix[row][col] = 0
+        if rowHasZero:
+            for col in range(cols):
                 matrix[0][col] = 0
-        
-        if first_col_has_zero:
-            for row in range(m):
+        if colHasZero:
+            for row in range(rows):
                 matrix[row][0] = 0
+                
                     
         
-                
-                
-                    
-            
+        
         
