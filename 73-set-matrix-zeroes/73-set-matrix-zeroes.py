@@ -3,33 +3,30 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        cols = len(matrix[0])
+        
         rows = len(matrix)
+        cols = len(matrix[0])
         
         rowHasZero = False
         colHasZero = False
         
-        for row in range(rows):
-            for col in range(cols):
-                if matrix[row][col] == 0:
-                    if row == 0:
+        for r in range(rows):
+            for c in range(cols):
+                if matrix[r][c] == 0:
+                    if r == 0:
                         rowHasZero = True
-                    if col == 0:
+                    if c == 0:
                         colHasZero = True
-                    matrix[0][col] = matrix[row][0] = 0
-                    
-        for row in range(1,rows):
-            for col in range(1,cols):
-                if matrix[0][col] == 0 or matrix[row][0] == 0:
-                    matrix[row][col] = 0
+                    matrix[0][c] = matrix[r][0] = 0
+        
+        for r in range(1,rows):
+            for c in range(1,cols):
+                if matrix[0][c] == 0 or matrix[r][0] == 0:
+                    matrix[r][c] = 0
         if rowHasZero:
             for col in range(cols):
                 matrix[0][col] = 0
         if colHasZero:
             for row in range(rows):
                 matrix[row][0] = 0
-                
-                    
-        
-        
         
