@@ -1,6 +1,7 @@
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        intervals = sorted(intervals,key = lambda x:(x[0],x[1]))
+        # intervals = sorted(intervals,key = lambda x:(x[0],x[1]))
+        intervals.sort()
         ans = [intervals[0]]
 
         for start,end in intervals:
