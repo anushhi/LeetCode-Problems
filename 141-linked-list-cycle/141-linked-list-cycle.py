@@ -6,11 +6,21 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        fast = slow = head
-        
-        while fast and fast.next:
-            fast = fast.next.next
-            slow = slow.next
-            if fast == slow:
+        #optimised TC -{O(n)} SC - {O(1)}
+        # fast = slow = head
+        # while fast and fast.next:
+        #     fast = fast.next.next
+        #     slow = slow.next
+        #     if fast == slow:
+        #         return True
+        # return False
+    
+    #BruteForce TC - {O(n)} SC- {O(n)}
+        hashmap = {}
+        while head:
+            if head in hashmap:
                 return True
+            hashmap[head] = hashmap.get(head,0)+1
+            head = head.next
         return False
+        
