@@ -6,16 +6,19 @@
 
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        slow = fast = head
-        while(fast and fast.next):
-            slow = slow.next
+        fast = slow = head
+        
+        while fast and fast.next:
             fast = fast.next.next
+            slow = slow.next
             
             if slow == fast:
-                #we got the postion now start again from beginning and count
                 slow = head
+                
                 while(slow!=fast):
-                    fast = fast.next
                     slow = slow.next
+                    fast = fast.next
                 return slow
         return None
+                    
+            
