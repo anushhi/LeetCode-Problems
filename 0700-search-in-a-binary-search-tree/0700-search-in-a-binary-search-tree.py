@@ -6,11 +6,19 @@
 #         self.right = right
 class Solution:
     def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+        #Recursion
+        # if root == None or root.val == val:
+        #     return root
+        # if root.val < val:
+        #     return self.searchBST(root.right,val)
+        # if root.val > val:
+        #     return self.searchBST(root.left,val)
         
-        if root == None or root.val == val:
-            return root
-        if root.val < val:
-            return self.searchBST(root.right,val)
-        if root.val > val:
-            return self.searchBST(root.left,val)
+        #Iterative
+        while (root != None and root.val != val):
+            if root.val < val:
+                root = root.right
+            else:
+                root = root.left
+        return root
         
