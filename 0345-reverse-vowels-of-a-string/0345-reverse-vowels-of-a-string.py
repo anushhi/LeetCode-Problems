@@ -1,6 +1,6 @@
 class Solution:
     def reverseVowels(self, s: str) -> str:
-        vowels = set(("A","E","I","O","U","a","e","i","o","u"))
+        vowels = ("A","E","I","O","U","a","e","i","o","u")
         p1 = 0
         p2 = len(s)-1
         s = list(s)
